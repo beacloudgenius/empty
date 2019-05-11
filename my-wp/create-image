@@ -1,0 +1,2 @@
+docker build -t cloudgenius/wp:workshop     .
+docker push cloudgenius/wp:workshop

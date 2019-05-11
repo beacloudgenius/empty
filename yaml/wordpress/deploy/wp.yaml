@@ -16,7 +16,7 @@ spec:
         role: wp
     spec:
       containers:
-      - image: wordpress:5.2.0-php7.3-apache
+      - image: cloudgenius/wp:workshop
         imagePullPolicy: IfNotPresent
         name: wp
         volumeMounts:
