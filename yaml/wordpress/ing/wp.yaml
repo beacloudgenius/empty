@@ -2,20 +2,20 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: tutumwp
+  name: wp
   annotations:
     kubernetes.io/ingress.class: "nginx"
     kubernetes.io/tls-acme: 'true'
 spec:
   rules:
-    - host: tutumwp.cloudgenius.co
+    - host: wp.cloudgenius.co
       http:
         paths:
         - path: /
           backend:
-            serviceName: tutumwp
+            serviceName: wp
             servicePort: 80
   tls:
     - hosts:
-        - "tutumwp.cloudgenius.co"
-      secretName: tutumwp.cloudgenius.co
+        - "wp.cloudgenius.co"
+      secretName: wp.cloudgenius.co

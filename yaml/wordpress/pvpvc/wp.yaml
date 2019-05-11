@@ -8,7 +8,6 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    # FIXME: use the right IP
     server: nfs-server.default.svc.cluster.local
     path: "/wp"
 ---
