@@ -6,9 +6,11 @@ jobs:
     steps:
       - checkout
       - run: |
+          cd my-wp
           docker build -t cloudgenius/wp:${CIRCLE_SHA1}     .
           echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
           docker push cloudgenius/wp:${CIRCLE_SHA1}
+          cd $HOME
           echo "${GKE_SERVICE_ACCOUNT}" | base64 --decode >> /tmp/gke_key.json
           gcloud auth activate-service-account --key-file /tmp/gke_key.json
           gcloud config set project ${GKE_PROJECT_ID}
