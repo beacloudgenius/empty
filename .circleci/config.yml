@@ -22,7 +22,8 @@ jobs:
             gcloud config set project ${GKE_PROJECT_ID}
             gcloud config set compute/zone ${GKE_COMPUTE_ZONE}
             gcloud --quiet container clusters get-credentials ${GKE_CLUSTER_NAME}
+            echo ${CIRCLE_SHA1}
             kubectl get deploy
-            kubectl set image deployment/wp wp=cloudgenius/wp:$(git log --format="%H" -n 1)
-            kubectl annotate deployment.v1.apps/wp kubernetes.io/change-cause=$(git log --format="%H" -n 1)
+            kubectl set image deployment/wp wp=cloudgenius/wp:${CIRCLE_SHA1}
+            kubectl annotate deployment.v1.apps/wp kubernetes.io/change-cause=${CIRCLE_SHA1}
             kubectl get deploy
